@@ -12,7 +12,14 @@ def site(message):
 
 @bot.message_handler(commands=['start', 'main', 'hello'])
 def main(message):
-    bot.send_message(message.chat.id, f'Privet, {message.from_user.first_name} {message.from_user.last_name}')
+    first_name = message.from_user.first_name
+    last_name = message.from_user.last_name
+
+    if last_name:
+        bot.send_message(message.chat.id, f'Privet !, {first_name} {last_name} !')
+    else:
+        bot.send_message(message.chat.id, f'Privet ! {first_name} !')
+    # bot.send_message(message.chat.id, f'Privet, {message.from_user.first_name} {message.from_user.last_name}')
 
 
 @bot.message_handler(commands=['help'])
@@ -23,7 +30,14 @@ def main(message):
 @bot.message_handler()
 def info(message):
     if message.text.lower() == 'привет':
-        bot.send_message(message.chat.id, f'Privet, {message.from_user.first_name} {message.from_user.last_name}')
+        # bot.send_message(message.chat.id, f'Privet, {message.from_user.first_name} {message.from_user.last_name}')
+            first_name = message.from_user.first_name
+            last_name = message.from_user.last_name
+
+            if last_name:
+                bot.send_message(message.chat.id, f'Privet !, {first_name} {last_name} !')
+            else:
+                bot.send_message(message.chat.id, f'Privet ! {first_name} !')
     elif message.text.lower() == 'id':
         bot.reply_to(message, f'ID: {message.from_user.id}')
 
