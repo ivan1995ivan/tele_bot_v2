@@ -11,7 +11,10 @@ def start(message):
     btn2 = types.KeyboardButton('Delete photo')
     btn3 = types.KeyboardButton('Edit text')
     markup.row(btn2, btn3)
-    bot.send_message(message.chat.id, 'Hello!', reply_markup=markup)
+    file = open('./foto.jpg', 'rb')
+    bot.send_photo(message.chat.id, file, reply_markup=markup)
+
+    # bot.send_message(message.chat.id, 'Hello!', reply_markup=markup)
     bot.register_next_step_handler(message, on_click)
 
 
